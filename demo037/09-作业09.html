@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      while (true) {
+        let symbol = prompt(`
+          1.输入 + - * /计算两个数字的结果
+          2.如果输入q则是退出`)
+        if (symbol === 'q') {
+          break
+        }
+        if (symbol === '+') {
+          let num1 = +prompt('请输入第一个数字')
+          let num2 = +prompt('请输入第二个数字')
+          alert(num1 + num2)
+        } else if (symbol === '-') {
+          let num1 = +prompt('请输入第一个数字')
+          let num2 = +prompt('请输入第二个数字')
+          alert(num1 - num2)
+        } else if (symbol === '*') {
+          let num1 = +prompt('请输入第一个数字')
+          let num2 = +prompt('请输入第二个数字')
+          alert(num1 * num2)
+        } else if (symbol === '/') {
+          let num1 = +prompt('请输入第一个数字')
+          let num2 = +prompt('请输入第二个数字')
+          alert(num1 / num2)
+        }
+      }
+    </script>
+  </body>
+</html>
