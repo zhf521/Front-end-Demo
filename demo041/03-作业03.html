@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function getBalance() {
+        let ye = +prompt('银行卡余额：')
+        let ss = +prompt('当月食宿消费金额：')
+        let sh = +prompt('当月生活消费金额：')
+        let sy = ye - ss - sh
+        return sy
+      }
+      let syje = getBalance()
+      document.write(`剩余金额为:${syje}`)
+    </script>
+  </body>
+</html>
