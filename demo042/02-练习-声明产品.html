@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let obj = {
+        name: '小米10青春版',
+        num: 123456,
+        weight: '0.55kg',
+        address: '中国大陆',
+      }
+      console.log(obj.address)
+      //改
+      obj.address = '大陆'
+      //增
+      obj.name = '小米10'
+      //删
+      delete obj.weight
+      console.log(obj)
+    </script>
+  </body>
+</html>
