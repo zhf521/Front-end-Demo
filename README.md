@@ -9,6 +9,6 @@ demo001-demo015
 
 demo016-demo034
 
-## JavaScript
+## JavaScript基础
 
 demo035-demo
