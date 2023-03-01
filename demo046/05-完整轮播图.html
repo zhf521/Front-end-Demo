@@ -175,17 +175,7 @@
         }
         //1.3得到对应的对象
         //console.log(sliderData[i])
-        //1.4渲染对应的对象
-        img.src = sliderData[i].url
-        p.innerHTML = sliderData[i].title
-        footer.style.backgroundColor = sliderData[i].color
-        //1.5跟换小圆点 先移除原来的类名 当前li再添加这个类名
-        document
-          .querySelector('.slider-indicator .active')
-          .classList.remove('active')
-        document
-          .querySelector(`.slider-indicator li:nth-child(${i + 1})`)
-          .classList.add('active')
+        toggle()
       })
       //2.左侧按钮
       //2.1获取左侧按钮
@@ -200,6 +190,11 @@
         }
         //1.3得到对应的对象
         //console.log(sliderData[i])
+        //调用函数
+        toggle()
+      })
+      //声明一个渲染的函数作为复用
+      function toggle() {
         //1.4渲染对应的对象
         img.src = sliderData[i].url
         p.innerHTML = sliderData[i].title
@@ -211,6 +206,30 @@
         document
           .querySelector(`.slider-indicator li:nth-child(${i + 1})`)
           .classList.add('active')
+      }
+      //3.自动播放模块
+      let timerID = 0
+      timerID = setInterval(function () {
+        //利用js自动调用点击事件 click() 一定要加小括号调用函数
+        next.click()
+      }, 1000)
+      //4.鼠标经过大盒子，停止计时器
+      const slider = document.querySelector('.slider')
+      //注册事件
+      slider.addEventListener('mouseenter', function () {
+        //停止计时器
+        clearInterval(timerID)
+      })
+      //5.鼠标离开大盒子，停止计时器
+      //注册事件
+      slider.addEventListener('mouseleave', function () {
+        //停止计时器
+        clearInterval(timerID)
+        //开启定时器
+        timerID = setInterval(function () {
+          //利用js自动调用点击事件 click() 一定要加小括号调用函数
+          next.click()
+        }, 1000)
       })
     </script>
   </body>
