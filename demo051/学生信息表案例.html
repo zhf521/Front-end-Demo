@@ -65,12 +65,71 @@
     </table>
     <script>
       //1.读取本地存储的数据
-      const data = localStorage.getItem(`student-data`)
+      const data = localStorage.getItem('student-data')
       //console.log(data)
       //2.如果有就返回对象，没有就声明一个空的数组 arr 一会渲染的时候用
       const arr = data ? JSON.parse(data) : []
       //console.log(arr)
-      
+      //3.渲染模块
+      const tbody = document.querySelector('tbody')
+      function render() {
+        //遍历数组，有几个对象就生成几个tr，然后追加给tbody
+        const trArr = arr.map(function (item, i) {
+          return `        
+          <tr>
+            <td>${item.stuId}</td>
+            <td>${item.uname}</td>
+            <td>${item.age}</td>
+            <td>${item.gender}</td>
+            <td>${item.salary}</td>
+            <td>${item.city}</td>
+            <td>
+            <a href="javascript:" data-id=${i}>删除</a>
+          </td>
+        </tr>
+         `
+        })
+        //追加给tbody
+        tbody.innerHTML = trArr.join('')
+      }
+      render()
+      //4.录入模块
+      const info = document.querySelector('.info')
+      //获取表单form里面带有name属性的元素
+      const items = info.querySelectorAll('[name]')
+      info.addEventListener('submit', function (e) {
+        //阻止提交
+        e.preventDefault()
+        //声明空的对象
+        const obj = {}
+        obj.stuId = arr.length ? arr[arr.length - 1].stuId + 1 : 1
+        //非空判断
+        for (let i = 0; i < items.length; i++) {
+          const item = items[i]
+          if (items[i].value === '') {
+            return alert('输入内容不能为空！')
+          }
+          obj[item.name] = item.value
+        }
+        //追加给数组
+        arr.push(obj)
+        //把数组存储到本地存储里面
+        localStorage.setItem('student-data', JSON.stringify(arr))
+        //渲染页面
+        render()
+        //重置表单
+        this.reset()
+      })
+      //5.删除模块
+      tbody.addEventListener('click', function (e) {
+        if (e.target.tagName === 'A') {
+          arr.splice(e.target.dataset.id, 1)
+          //写入本地存储
+          localStorage.setItem('student-data', JSON.stringify(arr))
+          //重新渲染
+          render()
+        }
+      })
     </script>
   </body>
 </html>
