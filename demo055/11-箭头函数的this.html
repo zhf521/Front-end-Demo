@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // console.log(this) //window
+      // //普通函数
+      // function fn() {
+      //   console.log(this) //window
+      // }
+      // fn() //window.fn()
+      // //对象方法里的this
+      // const obj = {
+      //   name: 'andy',
+      //   sayHi: function () {
+      //     console.log(this) //obj
+      //   },
+      // }
+      // obj.sayHi()
+      // //箭头函数的this
+      // const fn = () => {
+      //   console.log(this)//window
+      // }
+      // fn()
+      // //对象方法箭头函数 this
+      // const obj = {
+      //   uname: '老师',
+      //   sayHi: () => {
+      //     console.log(this) //this指向window
+      //   },
+      // }
+      // obj.sayHi()
+      const obj = {
+        uname: 'pink',
+        sayHi: function () {
+          console.log(this) //obj
+          let i = 10
+          const count = () => {
+            console.log(this) //this指向obj
+          }
+          count()
+        },
+      }
+      obj.sayHi()
+    </script>
+  </body>
+</html>
