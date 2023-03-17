@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Person() {}
+      const ldh = new Person()
+      //console.log(ldh.__proto__ === Person.prototype)
+      //console.log(Person.prototype.__proto__ === Object.prototype)
+      console.log(ldh instanceof Person) //true
+      console.log(ldh instanceof Object) //true
+      console.log(ldh instanceof Array) //false
+      console.log(Array instanceof Object) //true
+    </script>
+  </body>
+</html>
