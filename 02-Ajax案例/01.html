@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn"></button>
+    <script>
+      const btn = document.querySelector('#btn')
+      btn.addEventListener('click', function () {
+        let xhr = new XMLHttpRequest()
+        xhr.open('get', 'http://www.xiongmaoyouxuan.com/api/tabs', true)
+        xhr.send()
+        xhr.onload = function () {
+          //console.log(xhr.readyState)
+          //使用该语句也可 if (xhr.status >= 200 && xhr.status < 300) {
+          if (/^2\d{2}$/.test(xhr.status)) {
+            console.log(JSON.parse(xhr.responseText))
+          } else {
+            console.log('error', xhr.responseText)
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
