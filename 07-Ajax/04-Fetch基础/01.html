@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="get">get</button>
+    <button id="post">post</button>
+    <button id="put">put</button>
+    <button id="patch">patch</button>
+    <button id="delete">delete</button>
+    <script>
+      const oGet = document.querySelector('#get')
+      const oPost = document.querySelector('#post')
+      const oPut = document.querySelector('#put')
+      const oPatch = document.querySelector('#patch')
+      const oDelete = document.querySelector('#delete')
+
+      oGet.addEventListener('click', function () {
+        fetch('http://localhost:3000/users').then((res)=>{
+          console.log(res.json())
+        })
+      })
+      oPost.addEventListener('click', function () {
+        //console.log('post')
+        let xhr = new XMLHttpRequest()
+        xhr.open('POST', 'http://localhost:3000/users', true)
+        //form编码 name=zhf&age=18
+        //json {name:"zhf",age:18}
+        // xhr.setRequestHeader('content-type','application/x-www-form-urlencoded')
+        // xhr.send(`name=tc&age=18`)//数据放在这里
+        xhr.setRequestHeader('content-type', 'application/json')
+        xhr.send(
+          JSON.stringify({
+            name: 'gl',
+            age: 90,
+          })
+        )
+        xhr.onload = function () {
+          //console.log(xhr.readyState)
+          if (/^2\d{2}$/.test(xhr.status)) {
+            console.log(JSON.parse(xhr.responseText))
+          } else {
+            console.log('error', xhr.responseText)
+          }
+        }
+      })
+      oPut.addEventListener('click', function () {
+        //console.log('put')
+        let xhr = new XMLHttpRequest()
+        xhr.open('PUT', 'http://localhost:3000/users/4', true)
+        //form编码 name=zhf&age=18
+        //json {name:"zhf",age:18}
+        // xhr.setRequestHeader('content-type','application/x-www-form-urlencoded')
+        // xhr.send(`name=tc&age=18`)//数据放在这里
+        xhr.setRequestHeader('content-type', 'application/json')
+        xhr.send(
+          JSON.stringify({
+            age: 80,
+          })
+        )
+        xhr.onload = function () {
+          //console.log(xhr.readyState)
+          if (/^2\d{2}$/.test(xhr.status)) {
+            console.log(JSON.parse(xhr.responseText))
+          } else {
+            console.log('error', xhr.responseText)
+          }
+        }
+      })
+      oPatch.addEventListener('click', function () {
+        //console.log('patch')
+        let xhr = new XMLHttpRequest()
+        xhr.open('PATCH', 'http://localhost:3000/users/5', true)
+        //form编码 name=zhf&age=18
+        //json {name:"zhf",age:18}
+        // xhr.setRequestHeader('content-type','application/x-www-form-urlencoded')
+        // xhr.send(`name=tc&age=18`)//数据放在这里
+        xhr.setRequestHeader('content-type', 'application/json')
+        xhr.send(
+          JSON.stringify({
+            age: 180,
+          })
+        )
+        xhr.onload = function () {
+          //console.log(xhr.readyState)
+          if (/^2\d{2}$/.test(xhr.status)) {
+            console.log(JSON.parse(xhr.responseText))
+          } else {
+            console.log('error', xhr.responseText)
+          }
+        }
+      })
+      oDelete.addEventListener('click', function () {
+        //console.log('delete')
+        let xhr = new XMLHttpRequest()
+        xhr.open('DELETE', 'http://localhost:3000/users/7', true)
+        xhr.send()
+        xhr.onload = function () {
+          //console.log(xhr.readyState)
+          if (/^2\d{2}$/.test(xhr.status)) {
+            console.log(JSON.parse(xhr.responseText))
+          } else {
+            console.log('error', xhr.responseText)
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

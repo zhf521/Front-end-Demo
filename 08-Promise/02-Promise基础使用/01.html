@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //promise 承诺
+      //前期 画饼
+      //promise 构造函数
+      //接收参数 exexcutor 执行器
+      const mypro = new Promise((resolve, reject) => {
+        //如果达到条件
+        //resolve()
+        //如果没达到条件
+        reject()
+      })
+
+      //console.log(mypro)
+      // mypro.then(
+      //   () => {
+      //     console.log('发奖金')
+      //   },
+      //   () => {
+      //     console.log('不发奖金')
+      //   }
+      // )
+      // mypro.catch(() => {
+      //   console.log('不发奖金')
+      // })
+      mypro
+        .then(() => {
+          console.log('发奖金')
+        })
+        .catch(() => {
+          console.log('不发奖金')
+        })
+    </script>
+  </body>
+</html>
