@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      async function test() {
+        //const res = await 1111
+        //console.log(res)
+        const res = await new Promise((resolve, reject) => {
+          //resolve('ok')
+          //reject("fail")
+          setTimeout(() => {
+            resolve('OK')
+            console.log('1111')
+          }, 1000)
+        })
+        console.log('22222')
+        return res
+      }
+      const res = test()
+      console.log(res)
+      res
+        .then((res) => {
+          console.log(res)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    </script>
+  </body>
+</html>
