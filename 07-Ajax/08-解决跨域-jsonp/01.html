@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function test(data) {
+        console.log('111', data)
+      }
+
+      const script = document.createElement('script')
+      script.src =
+        'http://www.runoob.com/try/ajax/jsonp.php?jsoncallback=test'
+      document.body.appendChild(script)
+      //1.script 没有跨域限制
+      //2.后端配合返回的是 函数()调用
+      //3.前端提前声明好这个函数
+
+      //jsonp只能get请求 无法post put delete
+    </script>
+    <!-- <script src="1.txt"></script> -->
+  </body>
+</html>
