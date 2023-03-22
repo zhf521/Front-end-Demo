@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.3.4/axios.js"></script>
+  </head>
+  <body>
+    <button id="get">get</button>
+    <button id="post">post</button>
+    <button id="put">put</button>
+    <button id="patch">patch</button>
+    <button id="delete">delete</button>
+    <script>
+      const oGet = document.querySelector('#get')
+      const oPost = document.querySelector('#post')
+      const oPut = document.querySelector('#put')
+      const oPatch = document.querySelector('#patch')
+      const oDelete = document.querySelector('#delete')
+
+      oGet.addEventListener('click', function () {
+        axios
+          .get('http://localhost:3000/users', {
+            params: { name: 'kerwin' },
+          })
+          .then((res) => {
+            console.log(res.data)
+          })
+          .catch((err) => {
+            console.log('err', err)
+          })
+      })
+      oPost.addEventListener('click', function () {
+        axios
+          .post('http://localhost:3000/users', {
+            name: 'zhf',
+            age: 18,
+          }) //"name=xt&age=18" 传入form格式
+          .then((res) => {
+            console.log(res.data)
+          })
+          .catch((err) => {
+            console.log('err', err)
+          })
+      })
+      oPut.addEventListener('click', function () {
+        axios
+          .put('http://localhost:3000/users/3', {
+            age: 180,
+          })
+          .then((res) => {
+            console.log(res.data)
+          })
+          .catch((err) => {
+            console.log('err', err)
+          })
+      })
+      oPatch.addEventListener('click', function () {
+        axios
+          .patch('http://localhost:3000/users/2', {
+            age: 18,
+          })
+          .then((res) => {
+            console.log(res.data)
+          })
+          .catch((err) => {
+            console.log('err', err)
+          })
+      })
+      oDelete.addEventListener('click', function () {
+        axios
+          .delete('http://localhost:3000/users/3')
+          .then((res) => {
+            console.log(res.data)
+          })
+          .catch((err) => {
+            console.log('err', err)
+          })
+      })
+
+      //使用配置写法
+      // axios({
+      //   method: 'post',
+      //   url: 'http://localhost:3000/users',
+      //   //get 用params
+      //   //put post patch 用data
+      //   data: {
+      //     name: 'gangdan',
+      //     age: 60,
+      //   },
+      // }).then((res) => {
+      //   console.log(res.data).catch((err) => {
+      //     console.log('err', err)
+      //   })
+      // })
+    </script>
+  </body>
+</html>

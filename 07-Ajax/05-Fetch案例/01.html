@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="search" />
+    <h1 id="title"></h1>
+    <ul id="list"></ul>
+    <script>
+      const osearch = document.querySelector('#search')
+      const otitle = document.querySelector('#title')
+      const olist = document.querySelector('#list')
+      //osearch.oninput = function () {
+      //   fetch(`http://localhost:3000/news?author=${osearch.value}`)
+      //     .then((res) => res.json())
+      //     .then((res) => {
+      //       console.log(res)
+      //       if (res.length > 0) {
+      //         otitle.innerHTML=res[0].title
+
+      //         return fetch(`http://localhost:3000/comments?newsId=${res[0].id}`).then((res) => res.json())
+      //       } else {
+      //         otitle.innerHTML=''
+      //         return res
+      //       }
+      //     })
+      //     .then((res) => {
+      //       console.log(res)
+      //       olist.innerHTML=res.map(item=>`
+      //       <li>
+      //         ${item.body}
+      //       </li>`).join('')
+      //     })
+      // }
+
+      osearch.oninput = async function () {
+        const res = await fetch(
+          `http://localhost:3000/news?author=${osearch.value}`
+        ).then((res) => res.json())
+        let result
+        if (res.length > 0) {
+          otitle.innerHTML = res[0].title
+          result = await fetch(
+            `http://localhost:3000/comments?newsId=${res[0].id}`
+          ).then((res) => res.json())
+        } else {
+          otitle.innerHTML = ''
+          result = res
+        }
+        //console.log('111', result)
+        olist.innerHTML = result
+          .map(
+            (item) => `
+            <li>
+              ${item.body}
+            </li>`
+          )
+          .join('')
+      }
+    </script>
+  </body>
+</html>

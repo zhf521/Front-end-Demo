@@ -20,93 +20,92 @@
       const oDelete = document.querySelector('#delete')
 
       oGet.addEventListener('click', function () {
-        fetch('http://localhost:3000/users').then((res)=>{
-          console.log(res.json())
-        })
+        fetch('http://localhost:3000/users111?id=1')
+          .then((res) => {
+            if (res.ok) {
+              return res.json()
+            } else {
+              return Promise.reject({
+                status: res.status,
+                statusText: res.statusText,
+              })
+            }
+          })
+          .then((res) => {
+            console.log(res)
+          })
+          .catch((err) => {
+            console.log('err', err)
+          })
       })
       oPost.addEventListener('click', function () {
-        //console.log('post')
-        let xhr = new XMLHttpRequest()
-        xhr.open('POST', 'http://localhost:3000/users', true)
-        //form编码 name=zhf&age=18
-        //json {name:"zhf",age:18}
-        // xhr.setRequestHeader('content-type','application/x-www-form-urlencoded')
-        // xhr.send(`name=tc&age=18`)//数据放在这里
-        xhr.setRequestHeader('content-type', 'application/json')
-        xhr.send(
-          JSON.stringify({
-            name: 'gl',
-            age: 90,
+        fetch('http://localhost:3000/users', {
+          method: 'POST',
+          headers: {
+            //"content-type":"application/x-www-form-urlencoded"
+            'content-type': 'application/json',
+          },
+          //body:"name=kerwin&age=100"
+          body: JSON.stringify({
+            name: 'zhf',
+            age: 18,
+          }),
+        })
+          .then((res) => {
+            return res.json()
           })
-        )
-        xhr.onload = function () {
-          //console.log(xhr.readyState)
-          if (/^2\d{2}$/.test(xhr.status)) {
-            console.log(JSON.parse(xhr.responseText))
-          } else {
-            console.log('error', xhr.responseText)
-          }
-        }
+          .then((res) => {
+            console.log(res)
+          })
       })
       oPut.addEventListener('click', function () {
-        //console.log('put')
-        let xhr = new XMLHttpRequest()
-        xhr.open('PUT', 'http://localhost:3000/users/4', true)
-        //form编码 name=zhf&age=18
-        //json {name:"zhf",age:18}
-        // xhr.setRequestHeader('content-type','application/x-www-form-urlencoded')
-        // xhr.send(`name=tc&age=18`)//数据放在这里
-        xhr.setRequestHeader('content-type', 'application/json')
-        xhr.send(
-          JSON.stringify({
-            age: 80,
+        fetch('http://localhost:3000/users/2', {
+          method: 'PUT',
+          headers: {
+            //"content-type":"application/x-www-form-urlencoded"
+            'content-type': 'application/json',
+          },
+          //body:"name=kerwin&age=100"
+          body: JSON.stringify({
+            age: 20,
+          }),
+        })
+          .then((res) => {
+            return res.json()
           })
-        )
-        xhr.onload = function () {
-          //console.log(xhr.readyState)
-          if (/^2\d{2}$/.test(xhr.status)) {
-            console.log(JSON.parse(xhr.responseText))
-          } else {
-            console.log('error', xhr.responseText)
-          }
-        }
+          .then((res) => {
+            console.log(res)
+          })
       })
       oPatch.addEventListener('click', function () {
-        //console.log('patch')
-        let xhr = new XMLHttpRequest()
-        xhr.open('PATCH', 'http://localhost:3000/users/5', true)
-        //form编码 name=zhf&age=18
-        //json {name:"zhf",age:18}
-        // xhr.setRequestHeader('content-type','application/x-www-form-urlencoded')
-        // xhr.send(`name=tc&age=18`)//数据放在这里
-        xhr.setRequestHeader('content-type', 'application/json')
-        xhr.send(
-          JSON.stringify({
-            age: 180,
+        fetch('http://localhost:3000/users/2', {
+          method: 'PATCH', //必须大写
+          headers: {
+            //"content-type":"application/x-www-form-urlencoded"
+            'content-type': 'application/json',
+          },
+          //body:"name=kerwin&age=100"
+          body: JSON.stringify({
+            age: 280,
+          }),
+        })
+          .then((res) => {
+            return res.json()
           })
-        )
-        xhr.onload = function () {
-          //console.log(xhr.readyState)
-          if (/^2\d{2}$/.test(xhr.status)) {
-            console.log(JSON.parse(xhr.responseText))
-          } else {
-            console.log('error', xhr.responseText)
-          }
-        }
+          .then((res) => {
+            console.log(res)
+          })
       })
       oDelete.addEventListener('click', function () {
-        //console.log('delete')
-        let xhr = new XMLHttpRequest()
-        xhr.open('DELETE', 'http://localhost:3000/users/7', true)
-        xhr.send()
-        xhr.onload = function () {
-          //console.log(xhr.readyState)
-          if (/^2\d{2}$/.test(xhr.status)) {
-            console.log(JSON.parse(xhr.responseText))
-          } else {
-            console.log('error', xhr.responseText)
-          }
-        }
+        fetch('http://localhost:3000/users/2', {
+          method: 'DELETE',
+        })
+          .then((res) => {
+            return res.json()
+          })
+          .then((res) => {
+            console.log(res)
+          })
       })
     </script>
   </body>
