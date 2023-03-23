@@ -8,9 +8,17 @@
 </head>
 <body>
   <script>
-    for(let i =1;i<=6;i++){
-      document.write(`重复执行${i}次<br>`)
-    }
+    let arr = ['html','css','javascript']
+    arr.push('nodejs')
+    console.log(arr)
+    arr.unshift('vscode')
+    console.log(arr)
+    arr.splice(2,1)
+    console.log(arr)
+    arr.pop()
+    console.log(arr)
+    arr.shift()
+    console.log(arr)
   </script>
 </body>
 </html>
