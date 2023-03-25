@@ -17,10 +17,6 @@
         el: '#root',
         data: {
           isHot: true,
-          numbers: {
-            a: 1,
-            b: 1,
-          },
         },
         computed: {
           info() {
@@ -33,14 +29,32 @@
           },
         },
         watch: {
-          isHot: {
-            //immediate: true, //初始化时让handler调用一下
-            //deep: true, //深度监视
-            handler(newValue, oldValue) {
-              console.log('isHot被修改了', newValue, oldValue)
-            },
+          // //正常写法
+          // isHot: {
+          //   //immediate: true, //初始化时让handler调用一下
+          //   //deep: true, //深度监视
+          //   handler(newValue, oldValue) {
+          //     console.log('isHot被修改了', newValue, oldValue)
+          //   },
+          // },
+          //简写
+          isHot(newValue, oldValue) {
+            console.log('isHot被修改了', newValue, oldValue)
           },
         },
+      })
+      // //正常写法
+      // vm.$watch('isHot', {
+      //   //immediate: true, //初始化时让handler调用一下
+      //   //deep: true, //深度监视
+      //   handler(newValue, oldValue) {
+      //     console.log('isHot被修改了', newValue, oldValue)
+      //   },
+      // })
+
+      //简写
+      vm.$watch('isHot', function (newValue, oldValue) {
+        console.log('isHot被修改了', newValue, oldValue)
       })
     </script>
   </body>
