@@ -4,22 +4,27 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>理解MVVM</title>
+    <title>Document</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
   </head>
   <body>
-    <!-- 准备好一个容器 -->
     <div id="root">
-      <h1>学校名称：{{name}}</h1>
-      <h1>学校地址：{{address}}</h1>
+      姓：<input type="text" name="" id="" v-model="firstName" /><br />
+      名：<input type="text" name="" id="" v-model="lastName" /><br />
+      全名：<span>{{fullName()}}</span>
     </div>
     <script>
       new Vue({
         el: '#root',
         data: {
-          name: '曲阜师范大学',
-          address: '曲阜',
+          firstName: '张',
+          lastName: '三',
+        },
+        methods: {
+          fullName() {
+            return this.firstName + '-' + this.lastName
+          },
         },
       })
     </script>
