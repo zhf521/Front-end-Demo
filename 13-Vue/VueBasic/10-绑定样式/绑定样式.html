@@ -44,6 +44,10 @@
       <br />
       <!-- 绑定class样式 数组写法,适用于要绑定的样式个数不确定、名字也不确定 -->
       <div class="basic" :class="classArr">{{name}}</div>
+      <!-- 绑定class样式 对象写法,适用于要绑定的样式个数确定、名字也确定，但是要动态决定用不用 -->
+      <div class="basic" :class="classObj">{{name}}</div>
+      <div class="basic" :style="styleObj">{{name}}</div>
+      <div class="basic" :style="styleArr">{{name}}</div>
     </div>
     <script>
       Vue.config.productionTip = false
@@ -53,6 +57,27 @@
           name: '尚硅谷',
           mood: 'normal',
           classArr: ['atguigu1', 'atguigu2', 'atguigu3'],
+          classObj: {
+            atguigu1: false,
+            atguigu2: true,
+          },
+          styleObj: {
+            fontSize: '40px',
+            color: 'red',
+            backgroundColor: 'blue',
+          },
+          styleObj2: {
+            backgroundColor: 'orange',
+          },
+          styleArr: [
+            {
+              fontSize: '40px',
+              color: 'blue',
+            },
+            {
+              backgroundColor: 'gray',
+            },
+          ],
         },
         methods: {
           changeMood() {
