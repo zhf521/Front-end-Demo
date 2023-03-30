@@ -9,22 +9,14 @@
 </head>
 <body>
   <div id="root">
-    <h2>插值语法</h2>
-    <h4>你好，{{name}}</h4>
-    <hr>
-    <h2>指令语法</h2>
-    <a v-bind:href="tencent.url">点我去看{{tencent.name}}1</a>
-    <a :href="tencent.url">点我去看{{tencent.url}}2</a>
+    <input type="text" v-bind:value="name">
+    <input type="text" v-model:value="name">
   </div>
   <script>
     new Vue({
       el:'#root',
       data:{
-        name:'zhf',
-        tencent:{
-          name:'开端',
-          url:'https://v.qq.com/x/cover/mzc00200mp8vo9b/n0041aa087e.html',
-        }
+        name:'zhf'
       }
     })
   </script>

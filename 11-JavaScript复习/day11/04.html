@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const reg1 = /^[abc]$/
+      console.log(reg1.test('a'))
+      console.log(reg1.test('b'))
+      console.log(reg1.test('c'))
+      console.log(reg1.test('d'))
+      console.log(reg1.test('ab'))
+      console.log('--------')
+      const reg2 = /^[a-z]$/
+      console.log(reg2.test('a'))
+      console.log(reg2.test('b'))
+      console.log(reg2.test('c'))
+      console.log(reg2.test('d'))
+      console.log(reg2.test('0'))
+      console.log('--------')
+      const reg3 = /^[a-zA-Z0-9]$/
+      console.log(reg3.test('a'))
+      console.log(reg3.test('b'))
+      console.log(reg3.test('0'))
+      console.log(reg3.test('A'))
+      console.log(reg3.test('ab'))
+      console.log('--------')
+    </script>
+  </body>
+</html>

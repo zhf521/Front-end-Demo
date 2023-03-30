@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const reg1 = /^w*$/
+      console.log(reg1.test(''))
+      console.log(reg1.test('w'))
+      console.log(reg1.test('ww'))
+      console.log('----------')
+      const reg2 = /^w+$/
+      console.log(reg2.test(''))
+      console.log(reg2.test('w'))
+      console.log(reg2.test('ww'))
+      console.log('----------')
+      const reg3 = /^w?$/
+      console.log(reg3.test(''))
+      console.log(reg3.test('w'))
+      console.log(reg3.test('ww'))
+      console.log('----------')
+      const reg4 = /^w{3}$/
+      console.log(reg4.test(''))
+      console.log(reg4.test('w'))
+      console.log(reg4.test('ww'))
+      console.log(reg4.test('www'))
+      console.log('----------')
+      const reg5 = /^w{2,}$/
+      console.log(reg5.test(''))
+      console.log(reg5.test('w'))
+      console.log(reg5.test('ww'))
+      console.log(reg5.test('www'))
+      console.log('----------')
+      const reg6 = /^w{2,3}$/
+      console.log(reg6.test(''))
+      console.log(reg6.test('w'))
+      console.log(reg6.test('ww'))
+      console.log(reg6.test('www'))
+      console.log(reg6.test('wwww'))
+      console.log('----------')
+    </script>
+  </body>
+</html>
