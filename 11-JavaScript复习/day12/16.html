@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // console.log(this)
+      // function fn(){
+      //   console.log(this)
+      // }
+      // window.fn()
+      // const obj = {
+      //   name:'andy',
+      //   sayHi:function(){
+      //     console.log(this)
+      //   }
+      // }
+      // obj.sayHi()
+
+      // const fn =()=>{
+      //   console.log(this)
+      // }
+      // fn()
+
+      // const obj = {
+      //   uname:'zhf',
+      //   sayHi:()=>{
+      //     console.log(this)
+      //   }
+      // }
+      // obj.sayHi()
+
+      const obj = {
+        uname: 'zhf',
+        sayHi: function () {
+          console.log(this)
+          let i = 10
+          const count = () => {
+            console.log(this)
+          }
+          count()
+        },
+      }
+      obj.sayHi()
+    </script>
+  </body>
+</html>
