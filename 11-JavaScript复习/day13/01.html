@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // function foo(){
+      //   console.log('通过new也能调用函数...')
+      // }
+      // new foo()
+      function Pig(name, age, gender) {
+        this.name = name
+        this.age = age
+        this.gender = gender
+      }
+      const Peppa = new Pig('佩奇', 6, '女')
+      const George = new Pig('乔治', 3, '男')
+      const Mum = new Pig('猪妈妈', 30, '女')
+      const Dad = new Pig('猪爸爸', 32, '男')
+
+      console.log(Peppa)
+    </script>
+  </body>
+</html>
