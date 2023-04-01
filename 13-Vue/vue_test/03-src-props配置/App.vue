@@ -1,16 +1,15 @@
 <template>
 <div>
-  <School></School>
+  <Student name="李四" sex="女" :age="18"></Student>
   <hr>
-  <Student></Student>
+  <Student name="王老五" sex="男" :age="45"></Student>
 </div>
 </template>
 <script>
 import Student from './components/Student.vue'
-import School from './components/School.vue'
 export default {
   name: 'App',
-  components: { Student, School },
+  components: { Student },
   }
 </script>
 <style>

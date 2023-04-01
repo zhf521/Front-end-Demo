@@ -1,5 +1,5 @@
 <template>
-  <div class="demo">
+  <div class="school">
     <h2>学校名称：{{name}}</h2>
     <h2>学校地址：{{address}}</h2>
   </div>
@@ -10,14 +10,13 @@ export default {
   data(){
     return {
       name: 'QFNU',
-      address:'曲阜',
+      address:'曲阜'
     }
-  },
+  }
 }
 </script>
-
-<style scoped>
-  .demo{
-    background-color: skyblue;
+<style>
+  .school{
+    background-color:gray;
   }
 </style>

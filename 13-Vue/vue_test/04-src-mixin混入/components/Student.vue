@@ -1,10 +1,11 @@
 <template>
-  <div class="demo">
-    <h2>学生姓名：{{name}}</h2>
+  <div>
+    <h2 @click="showName">学生姓名：{{name}}</h2>
     <h2>学生性别：{{sex}}</h2>
   </div>
 </template>
 <script>
+import { mixin } from "../mixin";
 export default {
   name: 'Student',
   data(){
@@ -13,11 +14,6 @@ export default {
       sex:'男',
     }
   },
+  mixins: [mixin]
 }
 </script>
-
-<style scoped>
-  .demo{
-    background-color: orange;
-  }
-</style>

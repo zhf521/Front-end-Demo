@@ -1,5 +1,5 @@
 <template>
-  <div class="demo">
+  <div>
     <h2>学校名称：{{name}}</h2>
     <h2>学校地址：{{address}}</h2>
   </div>
@@ -15,9 +15,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-  .demo{
-    background-color: skyblue;
-  }
-</style>
