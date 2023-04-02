@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Person() {
+        this.sayHi=function(){
+          console.log('嗨~')
+        }
+      }
+      Person.prototype.sayHi = function () {
+        console.log('Hi~')
+      }
+      let p1 = new Person()
+      p1.sayHi()
+    </script>
+  </body>
+</html>
