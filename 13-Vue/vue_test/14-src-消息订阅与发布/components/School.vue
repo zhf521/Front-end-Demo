@@ -5,6 +5,7 @@
   </div>
 </template>
 <script>
+import pubsub from 'pubsub-js'
 export default {
   name: 'School',
   data(){
@@ -14,10 +15,12 @@ export default {
     }
   },
   mounted() {
-   
+    this.pubId=pubsub.subscribe('hello', function (msgName,data) {
+    console.log('有人发布了hello消息，hello消息的回调执行了', msgName, data)
+   })
   },
   beforeDestroy() {
-   
+   pubsub.unsubscribe(this.pubId)
   }
 }
 </script>
