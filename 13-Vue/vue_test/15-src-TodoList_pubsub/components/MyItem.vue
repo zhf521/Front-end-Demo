@@ -2,11 +2,9 @@
   <li>
     <label>
       <input type="checkbox" :checked="todo.done" @change="handleCheck(todo.id)" />
-      <span v-show="!todo.isEdit">{{ todo.title }}</span>
-      <input v-show="todo.isEdit" type="text" :value="todo.title" @blur="handleBlur(todo, $event)">
+      <span>{{ todo.title }}</span>
     </label>
     <button class="btn btn-danger" @click="handleDelete(todo.id)">删除</button>
-    <button v-show="!todo.isEdit" class="btn btn-edit" @click="handleEdit(todo)">编辑</button>
   </li>
 </template>
 <script>
@@ -19,28 +17,15 @@ export default {
     handleCheck(id) {
       //通知App组件将对应的todo对象的done值取反
       // this.checkTodo(id)
-      this.$bus.$emit('checkTodo', id)
+      this.$bus.$emit('checkTodo',id)
     },
     //删除
     handleDelete(id) {
       if (confirm('确认删除吗？')) {
         // this.deleteTodo(id)
         // this.$bus.$emit('deleteTodo', id)
-        pubsub.publish('deleteTodo', id)
+        pubsub.publish('deleteTodo',id)
       }
-    },
-    //编辑
-    handleEdit(todo) {
-      if (todo.hasOwnProperty('isEdit')) {
-        todo.isEdit = true
-      } else {
-        this.$set(todo, 'isEdit', true)
-      }
-    },
-    handleBlur(todo, e) {
-      todo.isEdit = false
-      if (!e.target.value.trim()) return alert('输入不能为空！')
-      this.$bus.$emit('updateTodo', todo.id, e.target.value)
     }
   },
 }
