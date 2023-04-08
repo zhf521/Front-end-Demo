@@ -32,12 +32,18 @@ const mutations = {
   JIAN(state, value) {
     state.sum -= value
   },
+  ADD_PERSON(state,value) {
+    state.personList.unshift(value)
+  }
 }
 //准备state--用于存储数据
 const state = {
   sum: 0, //当前的和
   school: '尚硅谷',
-  subject:'前端'
+  subject: '前端',
+  personList: [
+    {id:'001',name:'张三'}
+  ]
 }
 //准备getters--用于将state中的数据进行加工
 const getters = {
