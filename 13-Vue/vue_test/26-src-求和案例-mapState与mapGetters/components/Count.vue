@@ -23,20 +23,20 @@ export default {
       n: 1,//用户选择的数字
     }
   },
-  // methods: {
-  //   increment() {
-  //     this.$store.commit('JIA', this.n)
-  //   },
-  //   decrement() {
-  //     this.$store.commit('JIAN', this.n)
-  //   },
-  //   incrementOdd() {
-  //     this.$store.dispatch('jiaOdd', this.n)
-  //   },
-  //   incrementWait() {
-  //     this.$store.dispatch('jiaWait', this.n)
-  //   },
-  // },
+  methods: {
+    increment() {
+      this.$store.commit('JIA', this.n)
+    },
+    decrement() {
+      this.$store.commit('JIAN', this.n)
+    },
+    incrementOdd() {
+      this.$store.dispatch('jiaOdd', this.n)
+    },
+    incrementWait() {
+      this.$store.dispatch('jiaWait', this.n)
+    },
+  },
   computed: {
 
     ...mapState(['sum','school','subject']),
