@@ -11,8 +11,8 @@
     </select>
     <button @click="increment(n)">+</button>
     <button @click="decrement(n)">-</button>
-    <button @click="incrementOdd">当前求和为奇数再加</button>
-    <button @click="incrementWait">等一等再加</button>
+    <button @click="incrementOdd(n)">当前求和为奇数再加</button>
+    <button @click="incrementWait(n)">等一等再加</button>
   </div>
 </template>
 <script>
@@ -25,12 +25,13 @@ export default {
     }
   },
   methods: {
-    ...mapMutations({ increment: 'JIA', decrement: 'JIAN' }),
-    ...mapActions({ incrementOdd: 'jiaOdd', incrementWait: 'jiaWait' }),
+    ...mapMutations('countAbout',{ increment: 'JIA', decrement: 'JIAN' }),
+    ...mapActions('countAbout',{ incrementOdd: 'jiaOdd', incrementWait: 'jiaWait' }),
   },
   computed: {
-    ...mapState(['sum', 'school', 'subject','personList']),
-    ...mapGetters({ bigSum: 'bigSum' })
+    ...mapState('countAbout', ['sum', 'school', 'subject']),
+    ...mapState('personAbout', ['personList']),
+    ...mapGetters('countAbout', ['bigSum'] ),
   },
   mounted() {
   }
