@@ -48,6 +48,9 @@ const personOptions = {
       if (value.name.indexOf('王')===0) {
         context.commit('ADD_PERSON',value)
       }
+      else {
+        alert('添加的人必须姓王！')
+      }
     }
   },
   mutations: {
