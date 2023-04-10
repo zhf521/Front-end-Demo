@@ -1,36 +1,30 @@
 <template>
   <div>
-    <div class="row">
-      <Banner></Banner>
-    </div>
-    <div class="row">
-      <div class="col-xs-2 col-xs-offset-2">
-        <div class="list-group">
-          <!-- 原始html中我们使用a标签实现页面的跳转 -->
-          <!-- <a class="list-group-item active" href="./about.html">About</a> -->
-          <!-- <a class="list-group-item" href="./home.html">Home</a> -->
-
-          <!-- Vue中借助router-link标签实现路由的切换 -->
-          <router-link replace class="list-group-item" active-class="active" :to="{ name: 'guanyu' }">About</router-link>
-          <router-link replace class="list-group-item" active-class="active" to="/home">Home</router-link>
-        </div>
-      </div>
-      <div class="col-xs-6">
-        <div class="panel">
-          <div class="panel-body">
-            <!-- 指定组件的呈现位置 -->
-            <router-view></router-view>
-          </div>
-        </div>
-      </div>
-    </div>
+    <button>原生的按钮</button>
+    <input type="text">
+    <el-row>
+      <el-button>默认按钮</el-button>
+      <el-button type="primary">主要按钮</el-button>
+      <el-button type="success">成功按钮</el-button>
+      <el-button type="info">信息按钮</el-button>
+      <el-button type="warning">警告按钮</el-button>
+      <el-button type="danger">危险按钮</el-button>
+    </el-row>
+    <el-date-picker v-model="value1" type="date" placeholder="选择日期">
+    </el-date-picker>
+    <el-row>
+      <el-button round>圆角按钮</el-button>
+      <el-button type="primary" round>主要按钮</el-button>
+      <el-button type="success" round>成功按钮</el-button>
+      <el-button type="info" round>信息按钮</el-button>
+      <el-button type="warning" round>警告按钮</el-button>
+      <el-button type="danger" round>危险按钮</el-button>
+    </el-row>
   </div>
 </template>
 
 <script>
-import Banner from "./components/Banner"
 export default {
   name: 'App',
-  components: { Banner }
 }
 </script>
