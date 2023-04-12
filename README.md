@@ -16,3 +16,4 @@
 + [50ProjectsIn50Days](https://github.com/zhf521/Front-end_Demo/tree/master/12-50ProjectsIn50Days)
 + [Vue](https://github.com/zhf521/Front-end_Demo/tree/master/13-Vue)
 + [Vue复习](https://github.com/zhf521/Front-end_Demo/tree/master/14-Vue%E5%A4%8D%E4%B9%A0)
++ [ECharts](https://github.com/zhf521/Front-end_Demo/tree/master/15-ECharts)
