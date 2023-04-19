@@ -1,5 +1,6 @@
 <template>
-  <Demo></Demo>
+  <h1>博主的信息</h1>
+  <Demo msg="你好啊" school="ABC"></Demo>
 </template>
 
 <script>
