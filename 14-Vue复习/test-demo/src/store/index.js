@@ -8,7 +8,24 @@ Vue.use(Vuex) // 应用Vuex插件
 // 一个方法就是一个action
 // action中可以有逻辑代码和异步代码
 // action由组件来触发调用: this.$store.dispatch('actionName')
-const actions = {}
+const actions = {
+  jia(context, value) {
+    context.commit('JIA', value) //开发中一般大写
+  },
+  jian(context, value) {
+    context.commit('JIAN', value)
+  },
+  jiaOdd(context, value) {
+    if (context.state.sum % 2) {
+      context.commit('JIA', value)
+    }
+  },
+  jiaWait(context, value) {
+    setTimeout(() => {
+      context.commit('JIA', value)
+    }, 500)
+  },
+}
 
 // 准备mutations对象——用于操作数据（即修改state中的数据）
 // 包含多个方法: 能直接更新state
@@ -16,10 +33,10 @@ const actions = {}
 // mutation只能包含更新state的同步代码, 也不会有逻辑
 // mutation由action触发调用: commit('mutationName')
 const mutations = {
-  INCREMENT(state, value) {
+  JIA(state, value) {
     state.sum += value
   },
-  DECREMENT(state, value) {
+  JIAN(state, value) {
     state.sum -= value
   },
 }
