@@ -13,3 +13,5 @@ export default {
   components: { MyList, MySearch }
 }
 </script>
+
+<style scoped></style>
