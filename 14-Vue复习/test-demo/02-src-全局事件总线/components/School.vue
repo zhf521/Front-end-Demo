@@ -6,7 +6,6 @@
   </div>
 </template>
 <script>
-import pubsub from 'pubsub-js'
 export default {
   name: 'School',
   data() {
@@ -17,12 +16,13 @@ export default {
     }
   },
   mounted() {
-    this.pid = pubsub.subscribe('getData', (msgName, data) => {//此处必须要有msgName参数，否则传递的data数据是错误的
+    this.$bus.$on('getData', (data) => {
+      console.log('我是School组件,收到了数据', data)
       this.studentName = data
     })
   },
   beforeDestroy() {
-    pubsub.unsubscribe(pid)
+    this.$bus.$off('getData')
   },
 }
 </script>
