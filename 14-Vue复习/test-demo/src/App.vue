@@ -1,29 +1,23 @@
 <template>
-  <div>
-    <h1>{{ msg }},学生的姓名是：{{ studentName }}</h1>
-    <Student @getName="getStudentName"></Student>
+  <div class="app">
+    <School></School>
+    <Student></Student>
   </div>
 </template>
 
 <script>
 import Student from './components/Student'
+import School from './components/School'
+
 export default {
   name: 'App',
-  components: {
-    Student
-  },
-  data() {
-    return {
-      msg: "你好啊！",
-      studentName: ''
-    }
-  },
-  methods: {
-    getStudentName(name) {
-      this.studentName = name
-    }
-  }
+  components: { School, Student }
 }
 </script>
 
-<style></style>
+<style scoped>
+.app {
+  background-color: gray;
+  padding: 5px;
+}
+</style>
