@@ -9,6 +9,12 @@ Vue.use(Vuex) // 应用Vuex插件
 // action中可以有逻辑代码和异步代码
 // action由组件来触发调用: this.$store.dispatch('actionName')
 const actions = {
+  jia(context, value) {
+    context.commit('JIA', value) //开发中一般大写
+  },
+  jian(context, value) {
+    context.commit('JIAN', value)
+  },
   jiaOdd(context, value) {
     if (context.state.sum % 2) {
       context.commit('JIA', value)
@@ -40,15 +46,6 @@ const mutations = {
 //类似于data
 const state = {
   sum: 0,
-  school: 'QFNU',
-  subject: '前端',
-}
-
-// 准备getters——用于将state中的数据进行加工
-const getters = {
-  bigSum(state) {
-    return state.sum * 10
-  },
 }
 
 // 创建并暴露store
@@ -56,5 +53,4 @@ export default new Vuex.Store({
   actions,
   mutations,
   state,
-  getters,
 })

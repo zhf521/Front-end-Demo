@@ -9,6 +9,12 @@ Vue.use(Vuex) // 应用Vuex插件
 // action中可以有逻辑代码和异步代码
 // action由组件来触发调用: this.$store.dispatch('actionName')
 const actions = {
+  jia(context, value) {
+    context.commit('JIA', value) //开发中一般大写
+  },
+  jian(context, value) {
+    context.commit('JIAN', value)
+  },
   jiaOdd(context, value) {
     if (context.state.sum % 2) {
       context.commit('JIA', value)
