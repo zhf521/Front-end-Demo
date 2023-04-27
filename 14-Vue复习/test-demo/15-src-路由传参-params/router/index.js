@@ -26,24 +26,11 @@ const router = new VueRouter({
         {
           path: 'message', // 简化写法
           component: Message,
+
           children: [
             {
-              path: 'detail', //使用占位符声明接收params参数
-              name: 'xiangqing', //命名路由
+              path: 'detail/:id/:title', //使用占位符声明接收params参数
               component: Detail,
-              //第一种写法：props值为对象，该对象中所有的key-value的组合最终都会通过props传给Detail组件
-              // props:{a:900}
-
-              //第二种写法：props值为布尔值，为true时，则把路由收到的所有params参数通过props传给Detail组件
-              // props:true
-
-              //第三种写法：props值为函数，该函数返回的对象中每一组key-value都会通过props传给Detail组件
-              props($route) {
-                return {
-                  id: $route.query.id,
-                  title: $route.query.title,
-                }
-              },
             },
           ],
         },

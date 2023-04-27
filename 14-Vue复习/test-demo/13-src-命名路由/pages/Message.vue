@@ -1,20 +1,9 @@
 <template>
-  <div>
-    <ul>
-      <li v-for="message in messages" :key="message.id">
-        <router-link :to="{
-            name: 'xiangqing',
-            query: {
-              id: message.id,
-              title: message.title
-            }
-          }">{{ message.title
-  }}</router-link>
-      </li>
-    </ul>
-    <hr>
-    <router-view></router-view>
-  </div>
+  <ul>
+    <li v-for="message in messages" :key="message.id">
+      <a href="#">{{ message.title }}</a>
+    </li>
+  </ul>
 </template>
 
 <script>
@@ -46,3 +35,4 @@ export default {
   },
 }
 </script>
+<style></style>

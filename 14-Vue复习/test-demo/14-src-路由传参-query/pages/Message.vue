@@ -2,14 +2,18 @@
   <div>
     <ul>
       <li v-for="message in messages" :key="message.id">
+        <!-- 跳转路由并携带query参数，to的字符串写法 -->
+        <!-- <router-link :to="`/home/message/detail?id=${message.id}&title=${message.title}`">{{ message.title
+        }}</router-link> -->
+
+        <!-- 跳转路由并携带query参数，to的字符串写法 -->
         <router-link :to="{
-            name: 'xiangqing',
+            path: '/home/message/detail',
             query: {
               id: message.id,
-              title: message.title
+              title: message.title,
             }
-          }">{{ message.title
-  }}</router-link>
+          }">{{ message.title }}</router-link>
       </li>
     </ul>
     <hr>
@@ -46,3 +50,4 @@ export default {
   },
 }
 </script>
+<style></style>
