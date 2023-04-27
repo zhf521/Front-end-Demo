@@ -1,25 +1,9 @@
 <template>
-  <div>
-    <ul>
-      <li v-for="message in messages" :key="message.id">
-        <!-- 跳转路由并携带params参数，to的字符串写法 -->
-        <router-link :to="`/home/message/detail/${message.id}/${message.title}`">{{ message.title
-        }}</router-link>
-        <!-- 跳转路由并携带params参数，to的对象写法 -->
-        <!-- <router-link :to="{
-            //path:'/home/message/detail',//这里不能用path，应该用命名路由，见下一部分
-            //name:'命名路由名称',下一部分会讲
-            params: {
-              id: message.id,
-              title: message.title,
-            }
-          }
-          ">{{ message.title }}</router-link> -->
-      </li>
-    </ul>
-    <hr>
-    <router-view></router-view>
-  </div>
+  <ul>
+    <li v-for="message in messages" :key="message.id">
+      <a href="#">{{ message.title }}</a>
+    </li>
+  </ul>
 </template>
 
 <script>
@@ -51,6 +35,4 @@ export default {
   },
 }
 </script>
-
 <style></style>
-
