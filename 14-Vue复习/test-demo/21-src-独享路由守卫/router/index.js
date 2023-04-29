@@ -25,6 +25,14 @@ const router = new VueRouter({
           name: 'xinwen', //给路由命名
           component: News,
           meta: { isAuth: true, title: '新闻' },
+          beforeEnter(to, from, next) {
+            console.log('beforeEnter', to, from)
+            if (localStorage.getItem('school') === 'QFNU') {
+              next()
+            } else {
+              alert('暂无权限查看')
+            }
+          },
         },
         {
           path: 'message', // 简化写法
@@ -55,6 +63,15 @@ const router = new VueRouter({
       ],
     },
   ],
+})
+
+// 全局后置守卫：初始化时、每次路由切换后执行
+router.afterEach((to, from) => {
+  if (to.meta.title) {
+    document.title = to.meta.title //修改网页的title
+  } else {
+    document.title = 'Vue'
+  }
 })
 
 //暴露router
