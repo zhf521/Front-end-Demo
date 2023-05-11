@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // let arr = [1, 2, 3, 4, 5]
+      // //删除索引3位置起两个元素
+      // arr.splice(3, 2)
+      // console.log(arr) //[1,2,3]
+
+      // //splice()第二个参数为0时，表示插入数据
+      // let arr = [1, 2, 3, 4, 5]
+      // //在索引1位置插入A
+      // arr.splice(1, 0, 'A')
+      // console.log(arr) //[1, 'A', 2, 3, 4, 5]
+
+      //splice()第二个参数为1时，可以修改指定索引位置的元素
+      let arr = [1, 2, 3, 4, 5]
+      //修改索引1位置的元素为A
+      arr.splice(1, 1, 'A')
+      console.log(arr) //[1, 'A', 3, 4, 5]
+      let arr1 = [1, 2, 3, 4, 5]
+      //修改索引1位置的两个元素为A、B
+      arr1.splice(1, 2, 'A', 'B')
+      console.log(arr1) //[1, 'A', 'B', 3, 4, 5]
+    </script>
+  </body>
+</html>
