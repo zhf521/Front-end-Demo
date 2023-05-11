@@ -19,15 +19,61 @@
       // arr.splice(1, 0, 'A')
       // console.log(arr) //[1, 'A', 2, 3, 4, 5]
 
-      //splice()第二个参数为1时，可以修改指定索引位置的元素
-      let arr = [1, 2, 3, 4, 5]
-      //修改索引1位置的元素为A
-      arr.splice(1, 1, 'A')
-      console.log(arr) //[1, 'A', 3, 4, 5]
-      let arr1 = [1, 2, 3, 4, 5]
-      //修改索引1位置的两个元素为A、B
-      arr1.splice(1, 2, 'A', 'B')
-      console.log(arr1) //[1, 'A', 'B', 3, 4, 5]
+      // //splice()第二个参数为1时，可以修改指定索引位置的元素
+      // let arr = [1, 2, 3, 4, 5]
+      // //修改索引1位置的元素为A
+      // arr.splice(1, 1, 'A')
+      // console.log(arr) //[1, 'A', 3, 4, 5]
+      // let arr1 = [1, 2, 3, 4, 5]
+      // //修改索引1位置的两个元素为A、B
+      // arr1.splice(1, 2, 'A', 'B')
+      // console.log(arr1) //[1, 'A', 'B', 3, 4, 5]
+
+      // let arr = [3, 2, 4, 6, 5]
+      // arr.sort((x, y) => x - y)
+      // console.log(arr) //[2, 3, 4, 5, 6]
+
+      // let arr = [3, 2, 4, 6, 5]
+      // arr.sort((x, y) => y - x)
+      // console.log(arr) //[6, 5, 4, 3, 2]
+      // let arr1 = [1, 2, 3]
+      // let arr2 = [4, 5, 6]
+      // console.log(arr1.concat(arr2, 7, 8, 9)) //[1,2,3,4,5,6,7,8,9]
+
+      //let arr = [10, 11, 12, 13]
+      // let res = arr.every((item) => {
+      //   return item > 0
+      // })
+      // console.log(res) //true
+
+      // let res = arr.some((item) => item > 12)
+      // console.log(res) //true
+
+      // let res = arr.filter((item) => item > 12)
+      // console.log(res) //[13]
+
+      // let res = arr.map((item) => item + 'zhf')
+      // console.log(res) //['10zhf', '11zhf', '12zhf', '13zhf']
+
+      // arr.forEach((item, index) => {
+      //   console.log(item, index)
+      // })
+      // let res = arr.reduce((item1, item2) => item1 + item2)
+      // console.log(res) //46
+      let arr = [10, 11, 12, 13, 9]
+      console.log(arr.indexOf(15))
+      console.log(arr.indexOf(11))//-1
+      console.log(arr.lastIndexOf(15))//-1
+      console.log(arr.lastIndexOf(11))//1
+      console.log(arr.includes(10))
+      let res1 = arr.find((item) => item > 10)
+      console.log(res1)
+      let res2 = arr.findLast((item) => item > 10)
+      console.log(res2)
+      let res3 = arr.findIndex((item) => item > 10)
+      console.log(res3)
+      let res4 = arr.findLastIndex((item) => item > 10)
+      console.log(res4)
     </script>
   </body>
 </html>
