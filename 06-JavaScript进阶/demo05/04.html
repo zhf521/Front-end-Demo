@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let target = new Set()
+      const proxy = new Proxy(target, {
+        get(target, key) {
+          const value = target[key]
+          // 遇到 Function 都手动绑定一下 this
+          if (value instanceof Function) {
+            console.log(`访问${value}方法了`)
+            return value.bind(target)
+            //不能 是 call apply
+          }
+          return value
+        },
+      })
+      proxy.add(1)
+    </script>
+  </body>
+</html>

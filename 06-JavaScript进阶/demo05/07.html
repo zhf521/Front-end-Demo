@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function* gen() {
+        let res1 = yield
+        console.log('gen内部', res1)
+        let res2 = yield
+        console.log('gen内部', res2)
+      }
+
+      let g = gen()
+      g.next('data-1')
+      g.next('data-2')
+      g.next('data-3')
+    </script>
+  </body>
+</html>

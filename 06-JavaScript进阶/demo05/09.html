@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul id="list"></ul>
+    <script>
+      class List {
+        constructor(ele) {
+          this.element = ele
+        }
+
+        get html() {
+          return this.element.innerHTML
+        }
+        set html(arr) {
+          this.element.innerHTML = arr
+            .map((item) => `<li>${item}</li>`)
+            .join('')
+        }
+      }
+      let obj = new List(document.querySelector('#list'))
+
+      obj.html = ['aaa', 'bbb', 'cccc']
+    </script>
+  </body>
+</html>

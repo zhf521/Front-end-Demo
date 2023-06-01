@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function* gen() {
+        yield 'a'
+        yield 'b'
+      }
+
+      let g = gen()
+      let res1 = g.next()
+      console.log(res1)
+      let res2 = g.next()
+      console.log(res2)
+      let res3 = g.next()
+      console.log(res3)
+    </script>
+  </body>
+</html>
