@@ -4,19 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>栈结构的封装</title>
+    <title>Document</title>
   </head>
   <body>
     <script>
-      //push 添加一个元素到栈顶
-      //pop 出栈
-      //peek 返回栈顶
-
-      //isEmpty()
-      //clear()
-      //size()
-      //toString()
-
       class Stack {
         #items = []
         pop() {
@@ -42,7 +33,20 @@
           return this.#items.join(' ')
         }
       }
-      let stack = new Stack()
+      function convert(decNumber, base) {
+        let remStack = new Stack()
+        let number = decNumber
+        let string = ''
+        let baseString = '0123456789ABCDEF'
+        while (number > 0) {
+          remStack.push(number % base)
+          number = Math.floor(number / base)
+        }
+        while (!remStack.isEmpty()) {
+          string += baseString[remStack.pop()]
+        }
+        return string
+      }
     </script>
   </body>
 </html>
