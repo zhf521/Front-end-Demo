@@ -27,29 +27,38 @@
           this.#count++
         }
         addFront(data) {
-          //1.如果为空
           if (this.isEmpty()) {
             this.addBack(data)
+          } else if (this.#lowCount > 0) {
+            this.#lowCount--
+            this.#items[this.#lowCount] = data
           } else {
-            //2.lowCount>0
-            if (this.#lowCount > 0) {
-              this.#lowCount--
-              this.#items[this.#lowCount] = data
-            } else {
-              //lowCount===0
-              for (let i = this.#count; i > 0; i--) {
-                this.#items[i] = this.#items[i - 1]
-              }
-              this.#items[0] = data
-              this.#count++
+            for (let i = this.#count; i > 0; i--) {
+              this.#items[i] = this.#items[i - 1]
             }
+            this.count++
+            this.#lowCount = 0
+            this.#items[0] = data
           }
         }
-        removeBack() {}
+        removeBack() {
+          if (this.isEmpty()) {
+            return undefined
+          }
+          this.#count--
+          const result = this.#items[this.#count]
+          delete this.#items[this.#count]
+          return result
+        }
         peekFront() {
           return this.#items[this.#lowCount]
         }
-        peekBack() {}
+        peekBack() {
+          if (this.isEmpty()) {
+            return undefined
+          }
+          return this.#items[this.#count - 1]
+        }
         isEmpty() {
           return this.size() === 0
         }
@@ -60,13 +69,6 @@
           this.#items = {}
           this.#count = 0
           this.#lowCount = 0
-        }
-        toString() {
-          let str = ''
-          for (let i = this.#lowCount; i < this.#count; i++) {
-            str += `${this.#items[i]}`
-          }
-          return str
         }
       }
     </script>
