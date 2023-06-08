@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.3.6/axios.js"></script>
+  </head>
+  <body>
+    <button class="btn">登录</button>
+    <script>
+      document.querySelector('.btn').addEventListener('click', () => {
+        axios({
+          url: 'http://hmajax.itheima.net/api/login',
+          method: 'post',
+          data: {
+            username: 'itheima007',
+            password: '7654321',
+          },
+        })
+      })
+    </script>
+  </body>
+</html>
