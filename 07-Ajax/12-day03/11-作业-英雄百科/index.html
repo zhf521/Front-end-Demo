@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+    <title>英雄百科</title>
+  </head>
+
+  <body>
+    <div class="main">
+      <img
+        class="cover"
+        src="https://img.crawler.qq.com/lolwebschool/0/JAutoCMS_LOLWeb_f6416138ae858f73e2ca40a11587e17f/0"
+      />
+      <div class="hero-container">
+        <input type="text" class="search" placeholder="检索" />
+        <ul class="list"></ul>
+      </div>
+    </div>
+    <div id="infoModal" class="modal" tabindex="-1"></div>
+  </body>
+  <script src="./lib/axios.js"></script>
+  <script src="./lib/bootstrap.min.js"></script>
+  <script>
+    function getHeroList() {
+      axios({
+        url: 'https://autumnfish.cn/api/lol/search',
+      }).then((result) => {
+        // console.log(result.data.data)
+        const heroListStr = result.data.data.map((item) => {
+          return `
+          <li data-id="${item.heroId}">
+            <img src="${item.icon}" alt="" data-id="${item.heroId}">
+            <p data-id="${item.heroId}">${item.title}</p>
+          </li>
+          `
+        })
+        document.querySelector('.list').innerHTML = heroListStr
+      })
+    }
+    getHeroList()
+    const search = document.querySelector('.search')
+    search.addEventListener('change', () => {
+      const inputValue = search.value.trim()
+      console.log(inputValue)
+      if (inputValue === '') {
+        alert('输入不能为空！')
+      } else {
+        axios({
+          url: 'https://autumnfish.cn/api/lol/search',
+          params: {
+            q: inputValue,
+          },
+        }).then((result) => {
+          // console.log(result)
+          const heroListStr = result.data.data.map((item) => {
+            return `
+          <li data-id="${item.heroId}">
+            <img src="${item.icon}" alt="" data-id="${item.heroId}">
+            <p data-id="${item.heroId}">${item.title}</p>
+          </li>
+          `
+          })
+          document.querySelector('.list').innerHTML = heroListStr
+        })
+      }
+    })
+    document.querySelector('.list').addEventListener('click', (e) => {
+      // console.log(e.target.getAttribute("data-id"))
+      axios({
+        url: 'https://autumnfish.cn/api/lol/info',
+        params: {
+          id: e.target.getAttribute('data-id'),
+        },
+      }).then((result) => {
+        console.log(result.data.data)
+        const modalDom = document.querySelector('.modal')
+        const infoStr = `
+              <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">${
+              result.data.data.hero.name + result.data.data.hero.title
+            }</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="info">
+              <img
+                src="${result.data.data.hero.icon}"
+                class="icon img-thumbnail"
+                alt="..."
+              />
+              <div class="progress-box">
+                <div class="progress">
+                  <div
+                    class="attack progress-bar bg-success"
+                    style="width: ${result.data.data.hero.attack * 12.5}%"
+                  >
+                    攻击:
+                  </div>
+                </div>
+                <div class="progress">
+                  <div
+                    class="defense progress-bar bg-info"
+                    role="progressbar"
+                    style="width: ${result.data.data.hero.defense * 10}%"
+                  >
+                    防御:
+                  </div>
+                </div>
+                <div class="progress">
+                  <div
+                    class="magic progress-bar bg-warning"
+                    role="progressbar"
+                    style="width: ${result.data.data.hero.magic * 10}%"
+                  >
+                    魔法:
+                  </div>
+                </div>
+                <div class="progress">
+                  <div
+                    class="difficulty progress-bar bg-danger"
+                    role="progressbar"
+                    style="width: ${result.data.data.hero.difficulty * 10}%"
+                  >
+                    难度:
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p>
+              ${result.data.data.hero.shortBio}
+            </p>
+          </div>
+        </div>
+      </div>
+        `
+        modalDom.innerHTML = infoStr
+        const modal = new bootstrap.Modal(modalDom)
+        modal.show()
+      })
+    })
+  </script>
+</html>
