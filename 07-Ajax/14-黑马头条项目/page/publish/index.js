@@ -4,6 +4,20 @@
  *  1.2 展示到下拉菜单中
  */
 
+async function setChannelList() {
+  const res = await axios({
+    url: '/v1_0/channels',
+  })
+  const htmlStr =
+    `<option value="" selected="">请选择文章频道</option>` +
+    res.data.channels
+      .map((item) => `<option value="${item.id}" >${item.name}</option>`)
+      .join('')
+  // console.log(htmlStr)
+  document.querySelector('.form-select').innerHTML = htmlStr
+}
+setChannelList()
+
 /**
  * 目标2：文章封面设置
  *  2.1 准备标签结构和样式
@@ -12,6 +26,25 @@
  *  2.4 回显并切换 img 标签展示（隐藏 + 号上传标签）
  */
 
+document.querySelector('.img-file').addEventListener('change', async (e) => {
+  const file = e.target.files[0]
+  const fd = new FormData()
+  fd.append('image', file)
+  const res = await axios({
+    url: '/v1_0/upload',
+    method: 'POST',
+    data: fd,
+  })
+  console.log(res)
+  const imgUrl = res.data.url
+  document.querySelector('.rounded').src = imgUrl
+  document.querySelector('.rounded').classList.add('show')
+  document.querySelector('.place').classList.add('hide')
+})
+document.querySelector('.rounded').addEventListener('click', () => {
+  document.querySelector('.img-file').click()
+})
+
 /**
  * 目标3：发布文章保存
  *  3.1 基于 form-serialize 插件收集表单数据对象
@@ -19,6 +52,35 @@
  *  3.3 调用 Alert 警告框反馈结果给用户
  *  3.4 重置表单并跳转到列表页
  */
+
+document.querySelector('.send').addEventListener('click', async (e) => {
+  const form = document.querySelector('.art-form')
+  const data = serialize(form, { hash: true, empty: true })
+  delete data.id
+  data.cover = {
+    type: 1,
+    images: [document.querySelector('.rounded').src],
+  }
+  try {
+    const res = await axios({
+      url: '/v1_0/mp/articles',
+      method: 'POST',
+      data: data,
+    })
+    myAlert(true, '发布成功')
+    form.reset()
+      document.querySelector('.rounded').src = ''
+      document.querySelector('.rounded').classList.remove('show')
+    document.querySelector('.place').classList.remove('hide')
+    editor.setHtml('')
+    setTimeout(() => {
+      location.href = '../content/index.html'
+    }, 1500)
+  } catch (error) {
+    console.dir(error)
+    myAlert(false, error.response.data.message)
+  }
+})
 
 /**
  * 目标4：编辑-回显文章

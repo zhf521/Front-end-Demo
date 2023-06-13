@@ -16,3 +16,16 @@
  *  3.1 绑定点击事件
  *  3.2 清空本地缓存，跳转到登录页面
  */
+
+const token = localStorage.getItem('token')
+if (!token) {
+  location.href='../page/login/index.html'
+}
+axios({
+  url: '/v1_0/user/profile',
+  
+}).then(result => {
+  // console.log(result)
+  const username = result.data.name
+  document.querySelector('.nick-name').innerHTML=username
+})

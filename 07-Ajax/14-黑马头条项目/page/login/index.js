@@ -12,12 +12,18 @@ document.querySelector('.btn').addEventListener('click', () => {
   axios({
     url: '/v1_0/authorizations',
     method: 'POST',
-    data
-  }).then(result => {
-    myAlert(true,'登录成功')
-    console.log(result)
-  }).catch(error => {
-    myAlert(true, error.response.data.message)
-    console.dir(error.response.data.message)
+    data,
   })
+    .then((result) => {
+      myAlert(true, '登录成功')
+      console.log(result)
+      localStorage.setItem('token', result.data.token)
+      setTimeout(() => {
+        location.href = '../content/index.html'
+      }, 1500)
+    })
+    .catch((error) => {
+      myAlert(true, error.response.data.message)
+      console.dir(error.response.data.message)
+    })
 })
