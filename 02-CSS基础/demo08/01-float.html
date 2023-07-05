@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        background-color: #c5c2c2;
+        width: 300px;
+        padding: 10px;
+      }
+      h2 {
+        text-align: center;
+      }
+      div span {
+        display: block;
+        width: 25%;
+        float: left;
+      }
+      .clearfix:before,
+      .clearfix:after {
+        content: '';
+        display: table;
+      }
+      .clearfix:after {
+        clear: both;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="clearfix">
+      <h2><a>浮动演示</a></h2>
+      <span><a></a>1</span>
+      <span><a></a>2</span>
+      <span><a></a>3</span>
+      <span><a></a>4</span>
+      <span><a></a>5</span>
+      <span><a></a>6</span>
+      <span><a></a>7</span>
+      <span><a></a>8</span>
+    </div>
+  </body>
+</html>
