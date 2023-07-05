@@ -4,5 +4,6 @@
     "Vuex",
     "axios",
     "echarts"
-  ]
+  ],
+  "liveServer.settings.port": 5501
 }
