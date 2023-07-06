@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        height: 2000px;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      window.onscroll = throttle(function () {
+        alert('这是广告！')
+      }, 2000)
+      function throttle(fn, delay) {
+        let timer = true
+        return function () {
+          if (timer) {
+            setTimeout(() => {
+              fn.call(this)
+              timer = true
+            }, delay)
+          }
+          timer = false
+        }
+      }
+    </script>
+  </body>
+</html>

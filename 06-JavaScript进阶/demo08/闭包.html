@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      a = 100
+      function fn() {
+        let a = 10
+        return function () {
+          a++
+          console.log(a)
+        }
+      } // 形成闭包
+      let f = fn() // 执行这个函数即可创建一个闭包
+      f() // 11
+      f() // 12
+      f() // 13
+    </script>
+  </body>
+</html>
