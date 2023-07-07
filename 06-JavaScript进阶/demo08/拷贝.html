@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // let a = 10
+      // let b = a
+      // a = 100
+      // console.log(b)
+
+      // let a = [1, 2, 3, [3, 4, { name: 'jack' }]]
+      // let b = JSON.parse(JSON.stringify(a))
+      // a[3][1] = 5
+      // a[3][2] = 'bob'
+      // console.log(a) // [1,2,3,[3,5,{name:'bob'}]]
+      // console.log(b) // [1,2,3,[3,4,{name:'jack'}]]
+
+      function deepClone(oldData) {
+        if (typeof oldData === 'object' && oldData !== null) {
+          let res = oldData instanceof Array ? [] : {}
+          for (let k in oldData) {
+            if (oldData.hasOwnProperty(k)) {
+              res[k] = deepClone(oldData[k])
+            }
+          }
+          return res
+        } else {
+          return oldData
+        }
+      }
+      let obj = {
+        name: 'jack',
+        age: 18,
+        hobby: ['swim', 'sing'],
+        fn() {
+          console.log(this.name)
+        },
+      }
+      let obj2 = deepClone(obj)
+      obj.hobby[0] = 'play'
+      console.log(obj2)
+      console.log(obj)
+    </script>
+  </body>
+</html>
