@@ -16,15 +16,15 @@
         alert('这是广告！')
       }, 2000)
       function throttle(fn, delay) {
-        let timer = true
+        let timer = null
         return function () {
-          if (timer) {
-            setTimeout(() => {
-              fn.call(this)
-              timer = true
-            }, delay)
+          if (timer !== null) {
+            return
           }
-          timer = false
+          timer = setTimeout(() => {
+            fn.call(this)
+            timer = null
+          }, delay)
         }
       }
     </script>
