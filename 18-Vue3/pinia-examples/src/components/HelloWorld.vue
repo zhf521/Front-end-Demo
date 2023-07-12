@@ -1,11 +1,10 @@
-<template></template>
-<script setup lang="ts">
-import { useMainStore } from '../store/'
+<template>
+  <p> {{ mainStore.count }}</p>
+</template>
+<script setup>
+import { useMainStore } from '../store/index.ts'
 
 const mainStore = useMainStore()
-console.log(mainStore.count)
-
 
 </script>
-
-<style scoped></style>
+<style></style>
