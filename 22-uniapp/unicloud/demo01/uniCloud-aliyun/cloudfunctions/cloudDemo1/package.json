@@ -1,0 +1,7 @@
+{
+  "name": "coudDemo1",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}
