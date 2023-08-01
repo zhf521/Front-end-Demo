@@ -34,6 +34,10 @@
 		onLoad() {
 			this.getData()
 		},
+		onPullDownRefresh() {
+			this.listArr = []
+			this.getData()
+		},
 		methods: {
 			goDetail(e) {
 				// console.log(e)
@@ -52,7 +56,7 @@
 					let oldList = this.listArr
 					let nsList = [...oldList, ...res.result.data]
 					this.listArr = nsList
-
+					uni.stopPullDownRefresh()
 				})
 			},
 			goAdd() {
