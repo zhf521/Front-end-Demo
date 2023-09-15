@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>懒加载</title>
+        <style>
+            /* 一定记得设置图片高度 */
+            img {
+                display: block;
+                margin-bottom: 50px;
+                height: 200px;
+            }
+        </style>
+    </head>
+    <body>
+        <img src="./风景图/default.jpg" data-src="./风景图/01.jpg" />
+        <img src="./风景图/default.jpg" data-src="./风景图/02.jpg" />
+        <img src="./风景图/default.jpg" data-src="./风景图/03.jpg" />
+        <img src="./风景图/default.jpg" data-src="./风景图/04.jpg" />
+        <img src="./风景图/default.jpg" data-src="./风景图/05.jpg" />
+        <img src="./风景图/default.jpg" data-src="./风景图/06.jpg" />
+        <img src="./风景图/default.jpg" data-src="./风景图/07.jpg" />
+        <img src="./风景图/default.jpg" data-src="./风景图/08.jpg" />
+        <img src="./风景图/default.jpg" data-src="./风景图/09.jpg" />
+        <img src="./风景图/default.jpg" data-src="./风景图/10.jpg" />
+        <script>
+            function lazyLoad() {
+                // 用属性选择器返回属性名为data-src的img元素列表
+                let imgs = document.querySelectorAll('img[data-src]');
+                imgs.forEach((item) => {
+                    if (item.dataset.src === '') return;
+                    if (isElementInViewport(item)) {
+                        item.src = item.dataset.src;
+                        item.removeAttribute('data-src'); //移除属性，下次不再遍历
+                    }
+                });
+            }
+            function isElementInViewport(element) {
+                const rect = element.getBoundingClientRect(); // 用于获得页面中某个元素的左，上，右和下分别相对浏览器视窗的位置
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <=
+                        (window.innerHeight ||
+                            document.documentElement.clientHeight) &&
+                    rect.right <=
+                        (window.innerWidth ||
+                            document.documentElement.clientWidth)
+                );
+            }
+            lazyLoad(); //刚开始还没滚动屏幕时，要先触发一次函数，初始化首页的页面图片
+            document.addEventListener('scroll', lazyLoad);
+        </script>
+    </body>
+</html>
