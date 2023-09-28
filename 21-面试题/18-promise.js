@@ -1,30 +1,76 @@
-// setTimeout(() => {
-//     console.log(1);
-// }, 3000);
-// setTimeout(() => {
-//     console.log(2);
-// }, 2000);
-// setTimeout(() => {
-//     console.log(3);
-// }, 1000);
-
-// setTimeout(() => {
-//     console.log(1);
+// function drive(fn) {
 //     setTimeout(() => {
-//         console.log(2);
-//         setTimeout(() => {
-//             console.log(3);
-//         }, 1000);
+//         fn();
 //     }, 2000);
-// }, 3000);
+// }
 
-const p = new Promise((resolve, reject) => {
-    resolve('任务成功得到的数据');
-    reject('任务失败的信息');
-});
+// function shopping(fn) {
+//     setTimeout(() => {
+//         fn();
+//     }, 1000);
+// }
 
-p.then((result) => {
-    console.log(result);
-}).catch((error) => {
-    console.log(error);
-});
+// function run() {
+//     drive(() => {
+//         console.log('开车');
+//         shopping(() => {
+//             console.log('购物');
+//         });
+//     });
+// }
+
+// run();
+
+// function drive() {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             resolve('开车');
+//         }, 2000);
+//     });
+// }
+
+// function shopping() {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             resolve('购物');
+//         }, 1000);
+//     });
+// }
+
+// function run() {
+//     drive()
+//         .then((data) => {
+//             console.log(data);
+//             return shopping();
+//         })
+//         .then((data) => {
+//             console.log(data);
+//         });
+// }
+
+// run();
+
+function drive() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve('开车');
+        }, 2000);
+    });
+}
+
+function shopping() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve('购物');
+        }, 1000);
+    });
+}
+
+async function run() {
+    const result1 = await drive();
+    const result2 = await shopping();
+    console.log(result1);
+    console.log(result2);
+}
+
+run();
