@@ -11,13 +11,18 @@
             .left {
                 float: left;
             }
+            .bfc {
+                overflow: hidden;
+                /* 触发元素 BFC */
+            }
         </style>
     </head>
     <body>
-        <div class="container">
+        <div class="container bfc">
             <img
                 class="left"
                 src="https://www.imooc.com/static/img/index/logo.png"
+                style="margin-right: 10px"
             />
             <p>这是一段文字</p>
         </div>
