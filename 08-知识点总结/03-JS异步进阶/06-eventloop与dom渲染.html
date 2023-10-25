@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="container"></div>
+    </body>
+    <script>
+        const container = document.querySelector('#container');
+        const p1 = document.createElement('p');
+        p1.textContent = '一段文字';
+        const p2 = document.createElement('p');
+        p2.textContent = '一段文字';
+        const p3 = document.createElement('p');
+        p3.textContent = '一段文字';
+        container.appendChild(p1);
+        container.appendChild(p2);
+        container.appendChild(p3);
+        console.log('length:', container.children.length);
+        alert('本次执行栈执行结束，DOM结构已更新，但尚未触发渲染。');
+        // （alert 会阻断 JS 执行，也会阻断 DOM 渲染，便于查看效果）
+        // 到此，即本次执行栈执行结束后（同步任务都执行完了），浏览器会自动触发渲染，不用代码干预
+
+        // 另外，按照 event loop 触发 DOM 渲染时机，setTimeout 时 alert ，就能看到 DOM 渲染后的结果了
+        setTimeout(function () {
+            alert(
+                'setTimeout 是在下一次执行栈执行，就能看到 DOM 渲染出来的结果了'
+            );
+        });
+    </script>
+</html>
